@@ -9,7 +9,7 @@ class Contact extends Model
 {
     use HasFactory;
     protected $fillable = [
-        // 'category_id',
+        'category_id',
         'first_name',
         'last_name',
         'gender',
@@ -31,8 +31,8 @@ class Contact extends Model
             return null;
         }
     }
-    public function categories()
+    public function category()
     {
-        return $this->hasMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 }

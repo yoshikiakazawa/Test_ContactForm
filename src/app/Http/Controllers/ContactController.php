@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreContactRequest;
-use App\Http\Requests\UpdateContactRequest;
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
@@ -21,6 +20,28 @@ class ContactController extends Controller
         $categories = Category::all();
 
         return view('index', compact('contacts', 'categories'));
+    }
+
+    public function confirm(ContactRequest $request)
+    {
+        // $request->validate([
+        //     'first_name' => 'required|max:255',
+        //     'last_name' => 'required|max:255',
+        //     'gender' => 'required|numeric',
+        //     'email' => 'required|email|max:255',
+        //     'tel' => 'required|numeric|max:5',
+        //     'address' => 'required|max:255',
+        //     'building' => 'max:255',
+        //     'category_id' => 'required|numeric',
+        //     'detail' => 'required|max:120',
+        // ]);
+
+        $contact = $request->only('last_name', 'first_name', 'gender', 'email', 'tel', 'address', 'building', 'category_id', 'detail');
+        // $contact = $request->all();
+        // Contact::create($contact);
+        // return $contact;
+        // return view('thanks');
+        return view('confirm', compact('contact'));
     }
 
     /**
@@ -39,9 +60,11 @@ class ContactController extends Controller
      * @param  \App\Http\Requests\StoreContactRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreContactRequest $request)
+    public function store(ContactRequest $request)
     {
-        //
+        $contact = $request->only('last_name', 'first_name', 'gender', 'email', 'tel', 'address', 'building', 'category_id', 'detail');
+        Contact::create($contact);
+        return view('thanks');
     }
 
     /**
@@ -73,7 +96,7 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateContactRequest $request, Contact $contact)
+    public function update(Request $request, Contact $contact)
     {
         //
     }
