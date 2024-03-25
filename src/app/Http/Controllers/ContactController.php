@@ -17,31 +17,59 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contact::with('category')->get();
-        $categories = Category::all();
+        // $categories = Category::all();
 
-        return view('index', compact('contacts', 'categories'));
+        return view('index', compact('contacts'));
     }
 
     public function confirm(ContactRequest $request)
     {
-        // $request->validate([
-        //     'first_name' => 'required|max:255',
-        //     'last_name' => 'required|max:255',
-        //     'gender' => 'required|numeric',
-        //     'email' => 'required|email|max:255',
-        //     'tel' => 'required|numeric|max:5',
-        //     'address' => 'required|max:255',
-        //     'building' => 'max:255',
-        //     'category_id' => 'required|numeric',
-        //     'detail' => 'required|max:120',
-        // ]);
 
-        $contact = $request->only('last_name', 'first_name', 'gender', 'email', 'tel', 'address', 'building', 'category_id', 'detail');
-        // $contact = $request->all();
-        // Contact::create($contact);
-        // return $contact;
-        // return view('thanks');
-        return view('confirm', compact('contact'));
+
+        // $contact = $request->only('last_name', 'first_name', 'gender', 'email', 'tel1', 'tel2', 'tel3', 'address', 'building', 'category_id', 'detail');
+        $contact = $request->all();
+
+        $request->session()->put([
+            '_old_input' => [
+                'last_name' => $contact['last_name'],
+                'first_name' => $contact['first_name'],
+                'gender' => $contact['gender'],
+                'email' => $contact['email'],
+                'tel1' => $contact['tel1'],
+                'tel2' => $contact['tel2'],
+                'tel3' => $contact['tel3'],
+                'address' => $contact['address'],
+                'building' => $contact['building'],
+                'category_id' => $contact['category_id'],
+                'detail' => $contact['detail'],
+            ]
+        ]);
+
+        $fullName = $contact['last_name'] . ' ' . $contact['first_name'];
+
+        $tel = $contact['tel1'] . $contact['tel2'] . $contact['tel3'];
+
+        $gender_content = $contact['gender'];
+        switch ($gender_content)
+        {
+            case 1:
+                $gender_content = '男性';
+                break;
+            case 2:
+                $gender_content = '女性';
+                break;
+            case 3:
+                $gender_content = 'その他';
+                break;
+            default:
+                $gender_content = '未指定';
+                break;
+        }
+
+        $category = Category::find($contact['category_id']);
+        $category_content = $category ? $category->content : '';
+
+        return view('confirm', compact('fullName', 'contact', 'tel', 'gender_content', 'category_content'));
     }
 
     /**
@@ -51,7 +79,6 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -64,6 +91,10 @@ class ContactController extends Controller
     {
         $contact = $request->only('last_name', 'first_name', 'gender', 'email', 'tel', 'address', 'building', 'category_id', 'detail');
         Contact::create($contact);
+
+        $request->session()->forget('_old_input');
+        $request->session()->save();
+
         return view('thanks');
     }
 
@@ -98,7 +129,6 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
     }
 
     /**
