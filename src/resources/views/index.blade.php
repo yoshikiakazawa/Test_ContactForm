@@ -7,18 +7,18 @@
 @section('content')
 <div class="contact-form__content">
     <div class="contact-form__heading">
-        <h2>Confirm</h2>
+        <h2>Contact</h2>
     </div>
-    <form class="form" action="/contacts/confirm" method="post">
+    <form class="form" action="{{ route('contacts.confirm') }}" method="post">
         @csrf
         <div class="form__group">
             <div class="form__group-title">
-                <label class="form__label--item">お名前</label>
+                <label class="form__label--item" for="last_name" >お名前</label>
                 <span class="form__label--required">※</span>
             </div>
             <div class="form__group-content">
                 <div class="form__input--nametext">
-                    <input type="text" name="last_name" placeholder="例：山田" value="{{ old('last_name') }}" />
+                    <input type="text" name="last_name" id="last_name" placeholder="例：山田" value="{{ old('last_name') }}" />
                     <input type="text" name="first_name" placeholder="例：太郎"
                         value="{{ old('first_name') }}" />
                 </div>
@@ -37,7 +37,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--radio">
-                    <label><input type="radio" name="gender" value="1" checked />男性</label>
+                    <label><input type="radio" name="gender" id="gender" value="1" checked />男性</label>
                     <label><input type="radio" name="gender" value="2" />女性</label>
                     <label><input type="radio" name="gender" value="3" />その他</label>
                 </div>
@@ -50,7 +50,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="email" name="email" placeholder="test@example.com"
+                    <input type="email" name="email" id="email" placeholder="例：test@example.com"
                         value="{{ old('email') }}" />
                 </div>
                 @error('email')
@@ -60,13 +60,12 @@
         </div>
         <div class="form__group">
             <div class="form__group-title">
-                <label class="form__label--item">電話番号</label>
+                <label class="form__label--item" for="tel1">電話番号</label>
                 <span class="form__label--required">※</span>
             </div>
             <div class="form__group-content">
                 <div class="form__input--tel">
-                    {{-- <input type="tel" name="tel" placeholder="09012345678" value="{{ old('tel') }}" /> --}}
-                    <input type="tel" name="tel1" placeholder="090" value="{{ old('tel1') }}" />
+                    <input type="tel" name="tel1" id="tel1" placeholder="080" value="{{ old('tel1') }}" />
                     <span>-</span>
                     <input type="tel" name="tel2" placeholder="1234" value="{{ old('tel2') }}" />
                     <span>-</span>
@@ -84,7 +83,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="address" placeholder="東京都○○1-2-3"
+                    <input type="text" name="address" id="address" placeholder="例：東京都渋谷区千駄ヶ谷1-2-3"
                         value="{{ old('address') }}" />
                 </div>
                 @error('address')
@@ -98,7 +97,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="building" placeholder="マンション○○"
+                    <input type="text" name="building" id="building" placeholder="例：千駄ヶ谷マンション101"
                         value="{{ old('building') }}" />
                 </div>
                 @error('building')
@@ -113,9 +112,9 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--select">
-                    <select class="form__input--select-btn" name="category_id">
+                    <select class="form__input--select-btn" name="category_id" id='category_id'>
                         {{-- <option value="選択してください">選択してください</option> --}}
-                        <option value="選択してください" {{ old('category_id') == '選択してください' ? 'selected' : '' }}>選択してください</option>
+                        <option value="">選択してください</option>
                         @foreach ($categories as $category)
                             {{-- <option value="{{ $category->id }}">{{ $category->content }}</option> --}}
                             <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->content }}</option>
@@ -134,7 +133,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--textarea">
-                    <textarea name="detail" placeholder="資料をいただきたいです" >{{ old('detail') }}</textarea>
+                    <textarea name="detail" id="detail" placeholder="お問い合わせ内容をご記入ください" >{{ old('detail') }}</textarea>
                 </div>
                 @error('detail')
                     <div class="form__error">{{ $message }}</div>

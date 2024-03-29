@@ -16,16 +16,14 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::with('category')->get();
+        // $contacts = Contact::with('category')->get();
         // $categories = Category::all();
-
-        return view('index', compact('contacts'));
+        // return view('index', compact('contacts'));
+        return view('index');
     }
 
     public function confirm(ContactRequest $request)
     {
-
-
         // $contact = $request->only('last_name', 'first_name', 'gender', 'email', 'tel1', 'tel2', 'tel3', 'address', 'building', 'category_id', 'detail');
         $contact = $request->all();
 
@@ -45,26 +43,11 @@ class ContactController extends Controller
             ]
         ]);
 
-        $fullName = $contact['last_name'] . ' ' . $contact['first_name'];
+        $fullName = $contact['last_name'] . '　' . $contact['first_name'];
 
         $tel = $contact['tel1'] . $contact['tel2'] . $contact['tel3'];
 
-        $gender_content = $contact['gender'];
-        switch ($gender_content)
-        {
-            case 1:
-                $gender_content = '男性';
-                break;
-            case 2:
-                $gender_content = '女性';
-                break;
-            case 3:
-                $gender_content = 'その他';
-                break;
-            default:
-                $gender_content = '未指定';
-                break;
-        }
+        $gender_content = $contact['gender'] == 1 ? '男性' : ($contact['gender'] == 2 ? '女性' : 'その他');
 
         $category = Category::find($contact['category_id']);
         $category_content = $category ? $category->content : '';
@@ -137,8 +120,70 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy(Request $request)
     {
-        //
+        Contact::find($request->id)->delete();
+        return redirect('admin');
+    }
+
+    public function admin()
+    {
+        // $contacts = Contact::with('category')->get();
+        // $contacts = Contact::with('category')->paginate(7);
+        // $contacts = Contact::all();
+        $contacts = Contact::with('category')->orderBy('created_at', 'desc')->paginate(7);
+        // $contacts = Contact::Paginate(7);
+        // $contacts = Contact::query()->paginate(7);
+        // $contacts = Contact::with('category')->paginate(7);
+
+        return view('admin',  compact('contacts'));
+    }
+
+    public function search(Request $request)
+    {
+        // リクエストから検索キーワードを取得
+        $keyword = $request->input('keyword');
+        $gender = $request->input('gender');
+        $category_id = $request->input('category_id');
+        $created_at = $request->input('created_at');
+
+        // 検索クエリの構築
+        $query = Contact::query();
+
+        // 名前やメールアドレスの検索
+        if ($keyword)
+        {
+            $query->where(function ($q) use ($keyword)
+            {
+                $q->where('first_name', 'like', "%$keyword%")
+                    ->orWhere('last_name', 'like', "%$keyword%")
+                    ->orWhere('email', 'like', "%$keyword%");
+            });
+        }
+
+        // 性別の検索
+        if ($gender)
+        {
+            $query->where('gender', $gender);
+        }
+
+        // お問い合わせの種類の検索
+        if ($category_id)
+        {
+            $query->where('category_id', $category_id);
+        }
+
+        // 作成日時の検索
+        if ($created_at)
+        {
+            $query->whereDate('created_at', $created_at);
+        }
+
+        // 検索結果の取得
+        $contacts = $query->get();
+        $contacts = $query->paginate(7)->appends($request->all());
+
+        // 検索結果をビューに渡して表示する
+        return view('admin', compact('contacts'));
     }
 }

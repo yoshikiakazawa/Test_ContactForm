@@ -1,18 +1,31 @@
 .register-form__content {
     margin: 0 auto;
-    padding: 30px 15px;
-    max-width: 1230px;
+    padding-top: 30px;
+    padding-bottom: 60px;
+    /* max-width: 1230px; */
+    background-color: rgb(241,236,230);
 }
 
 .register-form__heading {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     text-align: center;
+    color: rgb(139,121,105);
+    font-size: 24px;
+}
+
+.register-form__heading,h2{
+    font-weight: 200;
 }
 
 .form {
+    background-color: rgb(255,255,255);
+    border: 2px solid #ddd;
+    border-radius: 8px;
     margin: 0 auto;
-    width: 25%;
+    width: 40%;
+    min-width: 400px;
     text-align: center;
+    padding: 60px;
 }
 
 .form__group {
@@ -24,18 +37,35 @@
 }
 
 .form__error {
+    margin: auto;
+    text-align: left;
+    width: 70%;
     height: 20px;
     color: #ff0000;
-    text-align: left;
 }
 
-.form__input--text input {
-    padding: 10px;
-    width: 100%;
+.form__group-title{
+    width: 70%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+.form__label--item{
+    /* padding: 10px; */
+    /* margin: 0 auto;
+    width:50%; */
     height: 40px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
+    font-size: 20px;
+}
+.form__input--text input {
+    padding-left: 20px;
+    margin: 0 auto;
+    width:70%;
+    height: 40px;
+    border-radius: 1px;
     appearance: none;
+    background-color: rgb(244,244,244);
+    border: none;
 }
 
 .form__button {
@@ -43,17 +73,18 @@
 }
 
 .form__button-submit {
-    padding: 10px;
-    width: 30%;
-    height: 50px;
+    width: 20%;
+    height: 40px;
     border: none;
-    border-radius: 3px;
-    background: #000;
+    border-radius: 1px;
+    background-color: rgb(130,117,106);
     color: #fff;
     cursor: pointer;
+    font-size: 16px;
 }
 
-.login__link {
-    margin-top: 20px;
-    text-align: center;
+input:focus{
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }

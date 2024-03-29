@@ -1,61 +1,64 @@
-.header {
-    background: #000;
-}
-
-.header__inner {
-    margin: 0 auto;
-    padding: 20px 15px;
-    max-width: 1230px;
-}
-
-.header__logo {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 24px;
-}
-
 .confirm__content {
     margin: 0 auto;
-    padding: 30px 15px;
+    padding-top: 30px;
+    padding-bottom: 60px;
     max-width: 1230px;
 }
 
 .confirm__heading {
     margin-bottom: 40px;
     text-align: center;
+    color: rgb(139,121,105);
+    font-size: 24px;
+}
+
+.confirm__heading,h2{
+    font-weight: 200;
 }
 
 .form {
     margin: 0 auto;
-    width: 70%;
+    width: 80%;
 }
 
 .confirm-table {
-    border: 1px solid #ddd;
+    border: 1px solid rgb(236,235,235);
 }
 
 .confirm-table__inner {
     width: 100%;
+    min-width: 500px;
+}
+
+.confirm-table__row{
+    width: 100%;
 }
 
 .confirm-table__header {
-    padding: 15px;
-    width: 20%;
-    border-bottom: 1px solid #ddd;
-    background-color: #eee;
-    font-weight: bold;
+    padding: 30px 30px;
+    width: 30%;
+    min-width: 200px;
+    border-bottom: 1px solid rgb(236,235,235);
+    background-color: rgb(186,168,153);
+    text-align: left;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 400;
 }
 
 .confirm-table__text {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+    padding: 30px 30px;
+    width: 70%;
+    min-width: 300px;
+    border-bottom: 1px solid rgb(236,235,235);
 }
 
 .confirm-table__text input {
     width: 100%;
     outline: none;
     border: none;
+    font-size: 20px;
+    color: rgb(139,121,105);
 }
 
 .confirm-table__row:last-child .confirm-table__header,
@@ -66,15 +69,20 @@
 .form__button {
     margin-top: 30px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
 }
 
 .form__button-submit {
+    margin-right: 40px;
     padding: 10px;
-    width: 30%;
-    height: 50px;
+    width: 120px;
+    height: 40px;
     border: none;
-    border-radius: 3px;
-    background: #000;
+    background: rgb(186,168,153);
     color: #fff;
     cursor: pointer;
+    font-size: 20px;
 }

@@ -29,7 +29,6 @@ class ContactRequest extends FormRequest
             'gender' => 'required|numeric|in:1,2,3',
             'email' => 'required|email|max:255',
             // 'tel2' => ['required|numeric|digits_between:1,5'],
-            // 'tel2' => ['required|numeric|digits_between:1,5'],
             // 'tel3' => ['required|numeric|digits_between:1,5'],
             // 'tel1' => ['required', 'numeric', 'digits_between:1,5'],
             // 'tel2' => ['required', 'numeric', 'digits_between:1,5'],

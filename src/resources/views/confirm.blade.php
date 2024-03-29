@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
-{{-- <?php print_r($contact) ?> --}}
+
 <div class="confirm__content">
     <div class="confirm__heading">
-        <h2>お問い合わせ内容確認</h2>
+        <h2>confirm</h2>
     </div>
-    <form class="form" action="/contacts" method="post">
+    <form class="form" action="{{ route('contacts.store') }}" method="post">
         @csrf
         <div class="confirm-table">
             <table class="confirm-table__inner">
@@ -70,10 +70,8 @@
         </div>
         <div class="form__button">
             <button class="form__button-submit" type="submit">送信</button>
+            <a class="update__button" href="{{ route('contacts.main') }}">修正</a>
         </div>
     </form>
-    <a class="update__button" href="/">
-        <button class="update__button-submit">修正</button>
-    </a>
 </div>
 @endsection

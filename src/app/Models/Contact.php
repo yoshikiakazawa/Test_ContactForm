@@ -19,18 +19,7 @@ class Contact extends Model
         'building',
         'detail',
     ];
-    // public function getGenderAttribute($value)
-    // {
-    //     if ($value == 1) {
-    //         return '男性';
-    //     } elseif ($value == 2) {
-    //         return '女性';
-    //     } elseif ($value == 3) {
-    //         return 'その他';
-    //     } else {
-    //         return null;
-    //     }
-    // }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

@@ -1,0 +1,250 @@
+.admin__content{
+    padding-top: 30px;
+    padding-bottom: 60px;
+    max-width: 1230px;
+    margin: auto;
+}
+
+.admin__heading{
+    margin-bottom: 40px;
+    text-align: center;
+    color: rgb(139,121,105);
+    font-size: 24px;
+}
+
+.admin__heading,h2{
+    font-weight: 200;
+}
+
+.search-form{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.search-form__item-input,
+.search-form__item-select-gender,
+.search-form__item-select-id,
+.search-form__item-date,
+.reset__button-submit,
+.search__button-submit{
+    height: 40px;
+    border: 1px solid #ddd;
+    appearance: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+.search-form__item-input{
+    /* width: 300px; */
+    width: 30%;
+}
+
+.search-form__item-select-gender{
+    /* width: 100px; */
+    width: 10%;
+    background-color: rgb(244,244,244);
+    color: rgb(139,121,105);
+}
+
+.search-form__item-select-id{
+    /* width: 200px; */
+    width: 20%;
+    background-color: rgb(244,244,244);
+    color: rgb(139,121,105);
+}
+
+.search-form__item-date{
+    /* width: 120px; */
+    width: 12%;
+    background-color: rgb(244,244,244);
+    color: rgb(139,121,105);
+}
+.reset__button-submit{
+    width: 100px;
+    min-width: 60px;
+    /* width: 10%; */
+    background-color: rgb(217,198,181);
+    color: #FFFFFF;
+}
+
+.search__button-submit{
+    width: 100px;
+    min-width: 60px;
+    /* width: 10%; */
+    background-color: rgb(139,121,105);
+    color: #FFFFFF;
+}
+
+.admin__option{
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    align-items: center;
+}
+
+.csv__button-submit{
+    border: 1px solid rgb(221,204,190);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: rgb(244,244,244);
+    color: rgb(139,121,105);
+    text-decoration: none;
+}
+
+.inquiry-table{
+    width: 90%;
+    margin: 20px auto;
+}
+
+.inquiry-table__inner{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.inquiry-table__row{
+    border: 1px solid #ccc;
+}
+
+.inquiry-table__header{
+    background-color: rgb(139,121,105);
+    color: #FFFFFF;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+.inquiry-table__item{
+    padding:0 20px;
+    text-align: left;
+    color: rgb(139,121,105);
+}
+
+.inquiry-form__button{
+    text-align: center;
+}
+
+.inquiry-form__button-submit{
+    margin: 0 auto;
+    border: 1px solid rgb(221,204,190);
+    cursor: pointer;
+    font-size: 16px;
+    color: rgb(221,204,190);
+    padding: 10px 20px;
+}
+
+.modal {
+    font-family: Arial, Helvetica, sans-serif;
+    display: none;
+    width: 700px;
+    height: 550px;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    text-align: center;
+    margin: auto;
+    box-shadow: 3px 3px 2px rgb(167,154,142);
+    border: 1px solid black;
+}
+
+.modal-toggle:checked + .modal {
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+label {
+    cursor:pointer;
+}
+
+.modal-toggle {
+    display: none;
+}
+
+
+.detail-table {
+    margin:auto;
+    margin-top: 40px;
+    width: 600px;
+    height: 450px;
+}
+
+.detail-table__inner {
+    width: 100%;
+    margin:auto;
+}
+
+.detail-table__header {
+    width: 35%;
+    font-weight: bold;
+    text-align: left;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+.detail-table__text{
+    width: 65%;
+    text-align: left;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+.detail-table__text input {
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+.detail-table__row:last-child .detail-table__header,
+.detail-table__row:last-child .detail-table__text {
+    border-bottom-width: 0;
+}
+
+.delete__button {
+    text-align: center;
+}
+
+.delete__button-submit{
+    margin: 0 auto;
+    border: 1px solid rgb(221,204,190);
+    cursor: pointer;
+    font-size: 16px;
+    background-color: rgb(186,55,13);
+    color: rgb(221,204,190);
+    padding: 4px 20px;
+}
+
+.close__button-submit{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #333; /* 枠の調整 */
+    border-radius: 50%;  /* 丸みの度合い */
+    background: #fff;
+}
+
+.close__button-submit::before, .close__button-submit::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px; /* 棒の幅（太さ） */
+    height: 12px; /* 棒の高さ */
+    background: #333; /* バツ印の色 */
+}
+
+.close__button-submit::before {
+    transform: translate(-50%,-50%) rotate(45deg);
+}
+
+.close__button-submit::after {
+    transform: translate(-50%,-50%) rotate(-45deg);
+}
