@@ -75,6 +75,7 @@
 .form__button-submit {
     width: 20%;
     height: 40px;
+    min-width: 80px;
     border: none;
     border-radius: 1px;
     background-color: rgb(130,117,106);

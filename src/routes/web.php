@@ -20,4 +20,4 @@ Route::middleware('auth')->group(function ()
 });
 
 Route::get('/csv-download', [CsvDownloadController::class, 'downloadCsv'])->name('admin.csv');
-Route::get('/register', [AuthController::class, 'register'])->name('admin.register');
+// Route::get('/register', [AuthController::class, 'register'])->name('admin.register');

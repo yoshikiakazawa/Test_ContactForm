@@ -21,15 +21,16 @@ Laravel 環境構築
 
 ## 使用技術(実行環境)
 
-<P>PHP 7.4.9</P>PHP 7.4.9
+<P>PHP 7.4.9</P>
 <p>Laravel Framework 8.83.8</p>
 <p>mysql 8.0.26</p>
 
 ## ER 図
 
-![ER図](image.png)
+![ER図](image-1.png)
 
 ## URL
 
-<p>開発環境:http://localhost/</p>
-<P>phpMyAdmin:http://localhost:8080/</P>
+開発環境： http://localhost/
+<br>
+phpMyAdmin： http://localhost:8080/

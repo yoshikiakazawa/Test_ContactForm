@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthRequest;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Category;
 use App\Http\Requests\ContactRequest;
+use App\Models\User;
 
 
 class AuthController extends Controller
@@ -18,8 +20,10 @@ class AuthController extends Controller
         return view('admin',  compact('contacts'));
     }
 
-    public function register()
-    {
-        return view('auth/register');
-    }
+    // public function register(AuthRequest $request)
+    // {
+    //     User::create($request->validated());
+
+    //     return view('auth/register');
+    // }
 }
